@@ -8,11 +8,10 @@ import {
   IconHome2,
   IconGauge,
   IconDeviceDesktopAnalytics,
-  IconFingerprint,
-  IconCalendarStats,
-  IconUser,
+  IconReceipt,
   IconSettings,
-  IconLogout,
+  IconTargetArrow,
+  IconBuildingBank
 } from '@tabler/icons-react';
 import classes from './App.module.css';
 import DashboardPage from './pages/DashboardPage';
@@ -20,7 +19,7 @@ import LogsPage from './pages/LogsPage';
 import GoalsPage from './pages/GoalsPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import DebtsPage from './pages/DebtsPage';
-import SettingsPage from './pages/SettingsPage';
+// import SettingsPage from './pages/SettingsPage';
 import React from 'react';
 
 interface NavbarLinkProps {
@@ -42,11 +41,10 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 
 const pages = [
   { icon: IconGauge, label: 'Dashboard', component: DashboardPage },
-  { icon: IconCalendarStats, label: 'Log', component: LogsPage },
+  { icon: IconReceipt, label: 'Log', component: LogsPage },
   { icon: IconDeviceDesktopAnalytics, label: 'Analytics', component: AnalyticsPage },
-  { icon: IconUser, label: 'Goals', component: GoalsPage },
-  { icon: IconFingerprint, label: 'Debt', component: DebtsPage },
-  { icon: IconSettings, label: 'Settings', component: SettingsPage },
+  { icon: IconTargetArrow, label: 'Goals', component: GoalsPage },
+  { icon: IconBuildingBank, label: 'Debt', component: DebtsPage }
 ];
 
 export default function App() {
@@ -62,6 +60,7 @@ export default function App() {
   ));
 
   const ActivePage = pages[active].component;
+  const activePageName = pages[active].label; // Retrieve active page label
 
   return (
     <div className={classes.app}>
@@ -81,12 +80,17 @@ export default function App() {
         </div>
 
         <Stack justify="center" gap={0}>
-          <NavbarLink icon={IconLogout} label="Logout" />
+          <NavbarLink icon={IconSettings} label="Settings"/>
         </Stack>
       </nav>
       
       <main className={classes.content}>
-        <ActivePage />
+        <header className={classes.header}>
+          <h1>{activePageName}</h1>
+        </header>
+        <div className={classes.pageContent}>
+          <ActivePage />
+        </div>
       </main>
     </div>
   );

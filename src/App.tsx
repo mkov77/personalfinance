@@ -19,7 +19,7 @@ import LogsPage from './pages/LogsPage';
 import GoalsPage from './pages/GoalsPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import DebtsPage from './pages/DebtsPage';
-// import SettingsPage from './pages/SettingsPage';
+import SettingsPage from './pages/SettingsPage';
 import React from 'react';
 
 interface NavbarLinkProps {
@@ -44,13 +44,14 @@ const pages = [
   { icon: IconReceipt, label: 'Log', component: LogsPage },
   { icon: IconDeviceDesktopAnalytics, label: 'Analytics', component: AnalyticsPage },
   { icon: IconTargetArrow, label: 'Goals', component: GoalsPage },
-  { icon: IconBuildingBank, label: 'Debt', component: DebtsPage }
+  { icon: IconBuildingBank, label: 'Debt', component: DebtsPage },
+  { icon: IconSettings, label: 'Settings', component: SettingsPage }
 ];
 
 export default function App() {
   const [active, setActive] = useState(0);
 
-  const links = pages.map((link, index) => (
+  const links = pages.slice(0, -1).map((link, index) => (
     <NavbarLink
       {...link}
       key={link.label}
@@ -60,7 +61,7 @@ export default function App() {
   ));
 
   const ActivePage = pages[active].component;
-  const activePageName = pages[active].label; // Retrieve active page label
+  const activePageName = pages[active].label;
 
   return (
     <div className={classes.app}>
@@ -80,7 +81,12 @@ export default function App() {
         </div>
 
         <Stack justify="center" gap={0}>
-          <NavbarLink icon={IconSettings} label="Settings"/>
+          <NavbarLink 
+            icon={IconSettings} 
+            label="Settings" 
+            active={active === pages.length - 1} 
+            onClick={() => setActive(pages.length - 1)}
+          />
         </Stack>
       </nav>
       

@@ -59,4 +59,5 @@
 .pageContent {
   padding: var(--mantine-spacing-lg); /* Adjust padding as needed */
   background-color: #ffffff; /* Example background color */
+  border-radius: var(--mantine-radius-md);
 }

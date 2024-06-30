@@ -40,7 +40,7 @@ export default function SavingsDash() {
         </Group>
 
         <Text c="dimmed" fz="sm">
-          In Total Savings
+          Total Savings
         </Text>
 
         <Progress.Root size={34} classNames={{ label: classes.progressLabel }} mt={40}>

@@ -3,6 +3,6 @@ import { Text } from "@mantine/core";
 
 export default function DebtsPage() {
     return(
-        <Text>Debts Page</Text>
+        <Text>Ew but necesary to track networth</Text>
     )
 }

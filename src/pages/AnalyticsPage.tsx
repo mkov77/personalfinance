@@ -3,6 +3,6 @@ import { Text } from "@mantine/core";
 
 export default function AnalyticsPage() {
     return(
-        <Text>Analytics Page</Text>
+        <Text>Where the real fun is at</Text>
     )
 }

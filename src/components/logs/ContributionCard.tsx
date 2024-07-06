@@ -1,6 +1,6 @@
 // src/components/logs/ContributionCard.tsx
 import React from 'react';
-import { Card, Text, Badge, Button, Group, Menu, ActionIcon, rem, Container } from '@mantine/core';
+import { Card, Text, Badge, Button, Group, Menu, ActionIcon, rem, Container, Grid } from '@mantine/core';
 import { Contribution } from '../../types/Contribution';
 import { IconDots, IconTrash, IconPencil, IconCalendar, IconTargetArrow, IconBucket, IconUser } from '@tabler/icons-react';
 
@@ -42,12 +42,14 @@ const ContributionCard: React.FC<ContributionCardProps> = ({ contribution, onDel
           <Menu.Item
             leftSection={<IconPencil style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
             color="black"
+            onClick={handleEditClick}
           >
             Edit
           </Menu.Item>
           <Menu.Item
             leftSection={<IconTrash style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
             color="red"
+            onClick={handleDeleteClick}
           >
             Delete
           </Menu.Item>
@@ -58,7 +60,62 @@ const ContributionCard: React.FC<ContributionCardProps> = ({ contribution, onDel
 
   return (
     <Card shadow="sm" padding="sm" radius="md" withBorder key={contribution.contributionid} style={{ marginTop: '10px' }}>
-      <Group justify="space-between" mt="md" mb="xs">
+      <Grid grow gutter="lg" align='center' justify='flex-start'>
+        {/* Amount */}
+        <Grid.Col span={2}>
+          <Text fw={500}>${Number(contribution.contributionamount).toFixed(2)}</Text>
+        </Grid.Col>
+        {/* Date */}
+        <Grid.Col span={2}>
+          <Container
+            style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}
+          >
+            <IconCalendar style={{ width: rem(18), height: rem(18), marginRight: rem(6) }} />
+            <Text>{new Date(contribution.contributiondate).toLocaleDateString()}</Text>
+          </Container>
+        </Grid.Col>
+        {/* Contributor */}
+        <Grid.Col span={2}>
+        <Container
+          style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}
+        >
+          <IconUser style={{ width: rem(18), height: rem(18), marginRight: rem(6) }} />
+          <Text>{contribution.contributor}</Text>
+        </Container>
+        </Grid.Col>
+        {/* Source */}
+        <Grid.Col span={2}>
+        <Container
+          style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}
+        >
+          <IconBucket style={{ width: rem(18), height: rem(18), marginRight: rem(6) }} />
+          <Text>{contribution.contributionsource}</Text>
+        </Container>
+        </Grid.Col>
+        {/* Goal */}
+        <Grid.Col span={2}>
+        <Container
+          style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}
+        >
+          <IconTargetArrow style={{ width: rem(18), height: rem(18), marginRight: rem(6) }} />
+          <Text>{contribution.contributiongoal}</Text>
+        </Container>
+        </Grid.Col>
+        <Grid grow gutter="lg" justify='flex-start' color='#fffff'>
+        {/* Menu Button */}
+        <Grid.Col>
+        {renderMenu()}
+        </Grid.Col>
+        </Grid>
+      </Grid>
+    </Card>
+  );
+};
+
+export default ContributionCard;
+
+
+{/* <Group justify="space-between" mt="md" mb="xs">
         <Text fw={500}>${Number(contribution.contributionamount).toFixed(2)}</Text>
 
 
@@ -75,7 +132,7 @@ const ContributionCard: React.FC<ContributionCardProps> = ({ contribution, onDel
           <IconUser style={{ width: rem(18), height: rem(18), marginRight: rem(6) }} />
           <Text>{contribution.contributor}</Text>
         </Container>
-        
+
         <Container
           style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}
         >
@@ -89,11 +146,6 @@ const ContributionCard: React.FC<ContributionCardProps> = ({ contribution, onDel
           <IconTargetArrow style={{ width: rem(18), height: rem(18), marginRight: rem(6) }} />
           <Text>{contribution.contributiongoal}</Text>
         </Container>
-
-        {renderMenu()}
-      </Group>
-    </Card>
-  );
-};
-
-export default ContributionCard;
+        {/* </Grid> */}
+      {/* {renderMenu()}
+      </Group> */}

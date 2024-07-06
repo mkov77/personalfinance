@@ -14,6 +14,8 @@ import {
     IconSettings    
   } from '@tabler/icons-react';
   import classes from './OptionsDash.module.css';
+  import { useState } from 'react';
+  import AddContributionForm from 'components/logs/AddContributionForm';
   
   const mockdata = [
     { title: 'Quick Add', icon: IconTablePlus, color: 'violet' },
@@ -26,6 +28,7 @@ import {
   
   export default function OptionsDash() {
     const theme = useMantineTheme();
+    const [activeComponent, setActiveComponent] = useState<string | null>(null);
   
     const items = mockdata.map((item) => (
       <UnstyledButton key={item.title} className={classes.item}>

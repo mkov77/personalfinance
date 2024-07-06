@@ -1,7 +1,8 @@
 // components/goals/GoalCard.tsx
 
 import React from 'react';
-import { Card, Text, Badge } from '@mantine/core';
+import { Card, Text, Badge, Container } from '@mantine/core';
+import { IconCalendarClock } from '@tabler/icons-react';
 
 interface GoalCardProps {
   goalname: string;
@@ -20,7 +21,13 @@ const GoalCard: React.FC<GoalCardProps> = ({ goalname, goalTargetDate }) => {
       <Text size="xl" style={{ marginBottom: 10 }}>
         {goalname}
       </Text>
-      <Badge color="blue">{formattedDate}</Badge>
+      
+      <Badge>
+        <Container style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} color="blue">
+          <IconCalendarClock />
+          {formattedDate}
+        </Container>
+      </Badge>
     </Card>
   );
 };

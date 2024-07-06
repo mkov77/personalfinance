@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = 5000;
@@ -15,6 +16,8 @@ const pool = new Pool({
 });
 
 app.use(cors());
+// Middleware to parse JSON bodies
+app.use(bodyParser.json());
 
 app.get('/contributions', async (req, res) => {
   try {

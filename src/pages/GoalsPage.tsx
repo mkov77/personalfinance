@@ -49,7 +49,7 @@ const GoalsPage: React.FC = () => {
           <Loader />
         ) : (
           goals.map((goal, index) => (
-            <Grid.Col key={index} span={6}>
+            <Grid.Col key={index} span={3}>
               <GoalCard goalname={goal.goalname} goalTargetDate={goal.goalTargetDate} />
             </Grid.Col>
           ))

@@ -61,8 +61,6 @@ const ContributionCard: React.FC<ContributionCardProps> = ({ contribution, onDel
     );
   }
 
-  console.log('Not Formatted: ', contribution.contributiondate);
-
 
   return (
     <Card shadow="sm" padding="sm" radius="md" withBorder key={contribution.contributionid} style={{ marginTop: '10px', paddingRight:'25px' }}>

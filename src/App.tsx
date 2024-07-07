@@ -43,8 +43,8 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 const pages = [
   { icon: IconGauge, label: 'Dashboard', component: DashboardPage },
   { icon: IconReceipt, label: 'Log', component: LogsPage },
-  { icon: IconDeviceDesktopAnalytics, label: 'Analytics', component: AnalyticsPage },
   { icon: IconTargetArrow, label: 'Goals', component: GoalsPage },
+  { icon: IconDeviceDesktopAnalytics, label: 'Analytics', component: AnalyticsPage },
   { icon: IconBuildingBank, label: 'Debt', component: DebtsPage },
   { icon: IconSettings, label: 'Settings', component: SettingsPage }
 ];

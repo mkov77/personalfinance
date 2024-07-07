@@ -41,16 +41,26 @@ const GoalsPage: React.FC = () => {
       });
   };
 
+  const handleDeleteGoal = (goalname: string) => {
+    axios.delete(`http://localhost:5000/goals/${goalname}`)
+      .then(response => {
+        fetchGoals();
+      })
+      .catch(error => {
+        console.error('There was an error deleting the goal!', error);
+      });
+  };
+
   return (
     <div>
       <AddGoalForm onAdd={handleAddGoal} />
-      <Grid gutter="lg" style={{ marginTop: '10px' }}>
+      <Grid gutter="lg" style={{ marginTop: '10px' }} columns={5}>
         {loading ? (
           <Loader />
         ) : (
           goals.map((goal, index) => (
-            <Grid.Col key={index} span={3}>
-              <GoalCard goalname={goal.goalname} goaltargetdate={goal.goaltargetdate} />
+            <Grid.Col key={index} span={1}>
+              <GoalCard goalname={goal.goalname} goaltargetdate={goal.goaltargetdate} onDelete={handleDeleteGoal} />
             </Grid.Col>
           ))
         )}

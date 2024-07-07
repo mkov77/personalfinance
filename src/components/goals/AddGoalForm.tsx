@@ -20,7 +20,7 @@ const AddGoalForm: React.FC<AddGoalFormProps> = ({ onAdd }) => {
 
   return (
     <>
-      <Button onClick={() => setOpened(true)}>Add Goal</Button>
+      <Button onClick={() => setOpened(true)} style={{backgroundColor: '#707a82'}}>Add Goal</Button>
       <Modal opened={opened} onClose={() => setOpened(false)} title="Add Goal">
         <TextInput label="Goal Name" value={goalName} onChange={(event) => setGoalName(event.currentTarget.value)} />
         <TextInput
@@ -29,7 +29,7 @@ const AddGoalForm: React.FC<AddGoalFormProps> = ({ onAdd }) => {
           value={goalTargetDate}
           onChange={(event) => setGoalTargetDate(event.currentTarget.value)}
         />
-        <Center style={{marginTop: '20px'}}><Button onClick={handleSubmit}>Submit</Button></Center>
+        <Center style={{marginTop: '20px'}}><Button onClick={handleSubmit} style={{backgroundColor: '#707a82'}}>Submit</Button></Center>
       </Modal>
     </>
   );

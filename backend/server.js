@@ -47,8 +47,6 @@ app.post('/contributions', async (req, res) => {
   }
 });
 
-// Add this to server.js
-
 app.delete('/contributions/:id', async (req, res) => {
   const { id } = req.params;
   try {
@@ -102,6 +100,18 @@ app.get('/goals', async (req, res) => {
   } catch (err) {
     console.error('Error fetching goals:', err);
     res.status(500).send('Error fetching goals');
+  }
+});
+
+// DELETE to remove a goal from the goals table
+app.delete('/goals/:goalname', async (req, res) => {
+  const { goalname } = req.params;
+  try {
+    await pool.query('DELETE FROM goals WHERE goalname = $1', [goalname]);
+    res.send('Goal deleted');
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
   }
 });
 

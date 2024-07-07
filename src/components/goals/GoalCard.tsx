@@ -6,15 +6,14 @@ import { IconCalendarClock } from '@tabler/icons-react';
 
 interface GoalCardProps {
   goalname: string;
-  goalTargetDate: string;
+  goaltargetdate: string;
 }
 
-const GoalCard: React.FC<GoalCardProps> = ({ goalname, goalTargetDate }) => {
-  // Parse the goalTargetDate string into a Date object
-  const parsedDate = new Date(goalTargetDate);
-  const formattedDate = parsedDate instanceof Date && !isNaN(parsedDate.getTime())
-    ? parsedDate.toLocaleDateString()
-    : 'Invalid Date';
+const GoalCard: React.FC<GoalCardProps> = ({ goalname, goaltargetdate }) => {
+  // Directly convert goalTargetDate to locale date string
+  const formattedDate = new Date(goaltargetdate).toLocaleDateString();
+  console.log('Formatted: ', formattedDate);
+  console.log('Not Formatted: ', goaltargetdate);
 
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>

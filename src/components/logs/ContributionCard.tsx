@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, Text, Badge, Button, Group, Menu, ActionIcon, rem, Container, Grid } from '@mantine/core';
 import { Contribution } from '../../types/Contribution';
 import { IconDots, IconTrash, IconPencil, IconCalendar, IconTargetArrow, IconBucket, IconUser } from '@tabler/icons-react';
+import EditContributionForm from './EditContributionForm';
 
 interface ContributionCardProps {
   contribution: Contribution;
@@ -16,12 +17,14 @@ const ContributionCard: React.FC<ContributionCardProps> = ({ contribution, onDel
   };
 
   const handleEditClick = () => {
-    // For demonstration purposes, you could implement editing functionality here
-    // Typically, this would open a modal or navigate to an edit form
-    console.log('Edit clicked for contribution:', contribution);
-    // Example of editing directly in the card
-    const updatedContribution: Contribution = { ...contribution, contributionamount: contribution.contributionamount + 10 };
-    onEdit(updatedContribution);
+    // // For demonstration purposes, you could implement editing functionality here
+    // // Typically, this would open a modal or navigate to an edit form
+    // console.log('Edit clicked for contribution:', contribution);
+    // // Example of editing directly in the card
+    // const updatedContribution: Contribution = { ...contribution, contributionamount: contribution.contributionamount + 10 };
+    // onEdit(updatedContribution);
+
+    <EditContributionForm/>
   };
 
 
@@ -58,8 +61,11 @@ const ContributionCard: React.FC<ContributionCardProps> = ({ contribution, onDel
     );
   }
 
+  console.log('Not Formatted: ', contribution.contributiondate);
+
+
   return (
-    <Card shadow="sm" padding="sm" radius="md" withBorder key={contribution.contributionid} style={{ marginTop: '10px' }}>
+    <Card shadow="sm" padding="sm" radius="md" withBorder key={contribution.contributionid} style={{ marginTop: '10px', paddingRight:'25px' }}>
       <Grid grow gutter="lg" align='center' justify='flex-start'>
         {/* Amount */}
         <Grid.Col span={2}>

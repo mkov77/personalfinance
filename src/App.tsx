@@ -21,6 +21,7 @@ import AnalyticsPage from './pages/AnalyticsPage';
 import DebtsPage from './pages/DebtsPage';
 import SettingsPage from './pages/SettingsPage';
 import React from 'react';
+import logo from './images/SM_LOGO_JUMBOFONT.png';
 
 interface NavbarLinkProps {
   icon: typeof IconHome2;
@@ -68,7 +69,7 @@ export default function App() {
       <nav className={classes.navbar}>
         <Center>
           <Image 
-            src="https://github.com/mkov77/personalfinance/blob/main/src/images/SM_LOGO_JUMBOFONT.png?raw=true"
+            src={logo}
             fallbackSrc="https://placehold.co/600x400?text=Placeholder"
             alt="Logo"
           />

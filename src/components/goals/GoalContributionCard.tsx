@@ -1,5 +1,5 @@
 import { Card, Grid, Text, Container, rem } from "@mantine/core";
-import { IconBucket, IconCalendar, IconTargetArrow, IconUser } from "@tabler/icons-react";
+import { IconBucket, IconCalendar, IconUser } from "@tabler/icons-react";
 import { Contribution } from "types/Contribution";
 
 interface GoalContributionCardProps {
@@ -11,10 +11,10 @@ const GoalContributionCard: React.FC<GoalContributionCardProps> = ({ contributio
 
     return (
         <>
-            <Card shadow="sm" padding="sm" radius="md" withBorder key={contribution.contributionid} style={{ marginTop: '10px', paddingRight: '25px' }}>
-                <Grid grow gutter="lg" align='center' justify='flex-start'>
+            <Card shadow="sm" padding="sm" radius="md" withBorder key={contribution.contributionid} style={{ marginTop: '10px', width: '100%' }}>
+                <Grid>
                     {/* Amount */}
-                    <Grid.Col span={3}>
+                    <Grid.Col span={2}>
                         <Text fw={500}>${Number(contribution.contributionamount).toFixed(2)}</Text>
                     </Grid.Col>
                     {/* Date */}
@@ -36,7 +36,7 @@ const GoalContributionCard: React.FC<GoalContributionCardProps> = ({ contributio
                         </Container>
                     </Grid.Col>
                     {/* Source */}
-                    <Grid.Col span={3}>
+                    <Grid.Col span={4}>
                         <Container
                             style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}
                         >

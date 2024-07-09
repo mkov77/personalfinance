@@ -1,6 +1,6 @@
 // src/components/logs/ContributionCard.tsx
 import React from 'react';
-import { Card, Text, Badge, Button, Group, Menu, ActionIcon, rem, Container, Grid } from '@mantine/core';
+import { Card, Text, Menu, ActionIcon, rem, Container, Grid } from '@mantine/core';
 import { Contribution } from '../../types/Contribution';
 import { IconDots, IconTrash, IconPencil, IconCalendar, IconTargetArrow, IconBucket, IconUser } from '@tabler/icons-react';
 import EditContributionForm from './EditContributionForm';

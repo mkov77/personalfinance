@@ -1,8 +1,7 @@
 // components/goals/GoalCard.tsx
 
 import React from 'react';
-import { Card, Text, Badge, Container, RingProgress, Menu, ActionIcon, rem, Button, Center } from '@mantine/core';
-import { IconCalendarClock, IconDots, IconPencil, IconTrash} from '@tabler/icons-react';
+import { Card, Text, RingProgress, Center } from '@mantine/core';
 import GoalModal from './GoalModal';
 
 interface GoalCardProps {
@@ -13,7 +12,7 @@ interface GoalCardProps {
 
 const GoalCard: React.FC<GoalCardProps> = ({ goalname, goaltargetdate, onDelete }) => {
   // Directly convert goalTargetDate to locale date string
-  const formattedDate = new Date(goaltargetdate).toLocaleDateString();
+  // const formattedDate = new Date(goaltargetdate).toLocaleDateString();
   const completed = 5;
   const total = 20;
 
@@ -56,7 +55,7 @@ const GoalCard: React.FC<GoalCardProps> = ({ goalname, goaltargetdate, onDelete 
             }
           />
           </Center>
-          <GoalModal/>
+          <GoalModal goal={goalname} />
     </Card>
   );
 };

@@ -11,7 +11,7 @@ const GoalContributionCard: React.FC<GoalContributionCardProps> = ({ contributio
 
     return (
         <>
-            <Card shadow="sm" padding="sm" radius="md" withBorder key={contribution.contributionid} style={{ marginTop: '10px', width: '100%' }}>
+            <Card shadow="sm" padding="sm" radius="md" mt={0} mb={10} m={10} withBorder key={contribution.contributionid} style={{ width: '100%' }}>
                 <Grid>
                     {/* Amount */}
                     <Grid.Col span={2}>

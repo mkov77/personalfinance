@@ -31,7 +31,6 @@
   align-items: center;
   justify-content: center;
   color: var(--mantine-color-black);
-  margin-bottom: var(--mantine-spacing-xs); /* Add margin to space out the links */
 
 
   &:hover {

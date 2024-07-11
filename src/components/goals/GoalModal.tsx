@@ -43,15 +43,15 @@ export default function GoalModal({ goal }: GoalModalProps) {
               62%
             </Text>
           </Group>
-          <Progress value={62} mt={5} />
+          <Progress color='#946e96' value={62} mt={5} />
           <Group justify="space-between" mt="md">
             <Text fz="sm">05/30/2025</Text>
-            <Badge size="sm">20 weeks left</Badge>
+            <Badge color='#707a82' size="sm">20 weeks left</Badge>
           </Group>
         </Card>
 
         <Card radius="md" withBorder mt={20} style={{ padding: '10px' }} shadow="sm">
-        <h3 style={{margin: 0}}>Contributions</h3>
+        <h3 style={{margin: 0, marginBottom: 10}}>Contributions</h3>
           <Grid>
             {filteredContributions.map((contribution) => (
               <GoalContributionCard
@@ -65,9 +65,9 @@ export default function GoalModal({ goal }: GoalModalProps) {
         <h3 style={{margin: 0}}>Options</h3>
         <Container>
         <Grid >
-            <Button>Edit</Button>
-            <Button>Archive</Button>
-            <Button>Delete</Button>
+            <Button color='#707a82' style={{margin: 10}}>Edit</Button>
+            <Button color='#707a82' style={{margin: 10}}>Archive</Button>
+            <Button color='red' style={{margin: 10}}>Delete</Button>
           </Grid>
           </Container>
           </Card>

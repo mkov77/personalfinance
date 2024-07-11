@@ -40,7 +40,7 @@ const GoalCard: React.FC<GoalCardProps> = ({ goalname, goaltargetdate, onDelete 
             roundCaps
             thickness={6}
             size={150}
-            sections={[{ value: (completed / total) * 100, color: 'red' }]}
+            sections={[{ value: (completed / total) * 100, color: '#946e96' }]}
             label={
               <div>
                 <Text ta="center" fz="lg" >

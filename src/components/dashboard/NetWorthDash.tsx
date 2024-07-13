@@ -1,8 +1,10 @@
 import { Text, Progress, Card } from '@mantine/core';
+import { SavingsTotal, DebtTotal } from '../../functions/Computations'
 
 export default function NetWorthDash() {
-
-    const currentNetWorth = 200000;
+    const currentSavings = SavingsTotal();
+    const currentDebt = DebtTotal();
+    const currentNetWorth = (currentSavings-currentDebt).toFixed(2);
     const goalNetWorth = 500000;
     const percentComplete = (Number(currentNetWorth)/Number(goalNetWorth)*100);
 
@@ -12,7 +14,7 @@ export default function NetWorthDash() {
         Net Worth
       </Text>
       <Text fz="lg" fw={500}>
-        {currentNetWorth} / {goalNetWorth}
+        $ {Number(currentNetWorth)} / {goalNetWorth}
       </Text>
       <Progress value={ percentComplete } mt="md" size="lg" radius="xl" color='#4c5b67' />
     </Card>

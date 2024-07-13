@@ -24,7 +24,7 @@ export default function DepositDash() {
             <CardSection className={classes.section}>
                 <Group justify="space-between" mt="md">
                     <div>
-                        <Text fw={500}>Last Deposit</Text>
+                        <Text fw={500}>Last Contribution</Text>
                         <Text style={{ fontSize: '2rem', fontWeight: 'bold' }}>
                             ${lastDepositAmount}
                         </Text>

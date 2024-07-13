@@ -170,3 +170,14 @@ app.get('/contributors', async (req, res) => {
     res.status(500).send('Error fetching contributors');
   }
 });
+
+// GET endpoint to fetch all debt
+app.get('/debts', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM debts');
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});

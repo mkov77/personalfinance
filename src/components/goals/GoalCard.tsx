@@ -1,20 +1,25 @@
 // components/goals/GoalCard.tsx
 
 import React from 'react';
-import { Card, Text, RingProgress, Center } from '@mantine/core';
+import { Card, Text, RingProgress, Center, NumberFormatterFactory } from '@mantine/core';
 import GoalModal from './GoalModal';
+import { GoalSavingsTotal } from '../../functions/Computations';
 
 interface GoalCardProps {
   goalname: string;
   goaltargetdate: string;
+  goalamount: number;
   onDelete: (goalname: string) => void;
 }
 
-const GoalCard: React.FC<GoalCardProps> = ({ goalname, goaltargetdate, onDelete }) => {
+const GoalCard: React.FC<GoalCardProps> = ({ goalname, goaltargetdate, goalamount, onDelete }) => {
   // Directly convert goalTargetDate to locale date string
   // const formattedDate = new Date(goaltargetdate).toLocaleDateString();
-  const completed = 5;
-  const total = 20;
+  const currentTotal = Number(GoalSavingsTotal(goalname));
+  const goalTotal = goalamount;
+  console.log('Savings Total: ' + currentTotal);
+  console.log('Goal Amount: ' + goalamount);
+  console.log('Percent: ' + (currentTotal / goalTotal) * 100);
 
   const handleDeleteClick = () => {
     onDelete(goalname); // Call onDelete with goal name
@@ -40,22 +45,22 @@ const GoalCard: React.FC<GoalCardProps> = ({ goalname, goaltargetdate, onDelete 
             roundCaps
             thickness={6}
             size={150}
-            sections={[{ value: (completed / total) * 100, color: '#946e96' }]}
+            sections={[{ value: (currentTotal / goalTotal) * 100, color: '#946e96' }]}
             label={
               <div>
                 <Text ta="center" fz="lg" >
                   {/* {((completed / total) * 100).toFixed(0)}%
-                  Saved */}
-                  $20,000 
+                  Saved */} 
+                  {currentTotal}
                 </Text>
                 <Text ta="center" fz="xs" c="dimmed">
-                  Remaining
+                  Saved
                 </Text>
               </div>
             }
           />
           </Center>
-          <GoalModal goal={goalname} />
+          <GoalModal goal={goalname} goalDate={goaltargetdate} goalamount={goalamount} />
     </Card>
   );
 };

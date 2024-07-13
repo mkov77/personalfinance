@@ -1,5 +1,6 @@
 import { Progress, Box, Text, Group, Paper, SimpleGrid} from '@mantine/core';
 import classes from './SavingsDash.module.css';
+import { SavingsTotal } from '../../functions/Computations'
 
 const data = [
   { label: 'CD', count: '$8,000', percentage: 40, color: '#b98abc' },
@@ -9,7 +10,7 @@ const data = [
 
 export default function SavingsDash() {
 
-  const amountSaved = 20000;
+  const amountSaved = SavingsTotal();
   const segments = data.map((segment) => (
     <Progress.Section value={segment.percentage} color={segment.color} key={segment.color}>
       {segment.percentage > 10 && <Progress.Label>{segment.percentage}%</Progress.Label>}

@@ -1,6 +1,7 @@
 import { Card, Grid, Text, Container, rem } from "@mantine/core";
 import { IconBucket, IconCalendar, IconUser } from "@tabler/icons-react";
 import { Contribution } from "types/Contribution";
+import { GoalSavingsTotal } from "functions/Computations";
 
 interface GoalContributionCardProps {
     contribution: Contribution;

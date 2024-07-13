@@ -9,6 +9,7 @@ import AddGoalForm from '../components/goals/AddGoalForm';
 interface Goal {
   goalname: string;
   goaltargetdate: string;
+  goalamount: number;
 }
 
 const GoalsPage: React.FC = () => {
@@ -60,7 +61,7 @@ const GoalsPage: React.FC = () => {
         ) : (
           goals.map((goal, index) => (
             <Grid.Col key={index} span={1}>
-              <GoalCard goalname={goal.goalname} goaltargetdate={goal.goaltargetdate} onDelete={handleDeleteGoal} />
+              <GoalCard goalname={goal.goalname} goaltargetdate={goal.goaltargetdate} goalamount={goal.goalamount} onDelete={handleDeleteGoal} />
             </Grid.Col>
           ))
         )}

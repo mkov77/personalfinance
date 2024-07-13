@@ -3,14 +3,20 @@ import { useEffect, useState } from "react";
 import GoalContributionCard from "./GoalContributionCard";
 import axios from "axios";
 import { Contribution } from "types/Contribution";
+import { IconCalendarClock } from '@tabler/icons-react';
+import { GoalSavingsTotal } from "../../functions/Computations";
 
 interface GoalModalProps {
   goal: string;
+  goalDate: string;
+  goalamount: number;
 }
 
-export default function GoalModal({ goal }: GoalModalProps) {
+export default function GoalModal({ goal, goalDate, goalamount }: GoalModalProps) {
   const [opened, setOpened] = useState(false);
   const [contributions, setContributions] = useState<Contribution[]>([]);
+  const savedTotal = GoalSavingsTotal(goal);
+  const percentGoal = savedTotal/goalamount*100;
 
   useEffect(() => {
     fetchContributions();
@@ -37,15 +43,18 @@ export default function GoalModal({ goal }: GoalModalProps) {
             <h3 style={{margin: 0}}>Progress</h3>
           <Group justify="space-between" mt="xs">
             <Text fz="sm">
-              $50,0000 / $80,000
+              ${Number(goalamount).toFixed(2)} / {savedTotal.toFixed(2)}
             </Text>
             <Text fz="sm" c="dimmed">
-              62%
+              {percentGoal.toFixed(0)}%
             </Text>
           </Group>
-          <Progress color='#946e96' value={62} mt={5} />
+          <Progress color='#946e96' value={percentGoal} mt={5} />
           <Group justify="space-between" mt="md">
-            <Text fz="sm">05/30/2025</Text>
+            <Group gap="5px">
+              <IconCalendarClock stroke={1.5}/>
+              <Text fz="sm" m={0}>{new Date(goalDate).toLocaleDateString()}</Text>
+            </Group>
             <Badge color='#707a82' size="sm">20 weeks left</Badge>
           </Group>
         </Card>

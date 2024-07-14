@@ -34,7 +34,7 @@ export default function GoalModal({ goal, goalDate, goalamount }: GoalModalProps
 
   // Filter contributions based on the current goal
   const filteredContributions = contributions.filter(contribution => contribution.contributiongoal === goal);
-
+  
   return (
     <>
       <Button onClick={() => setOpened(true)} style={{ backgroundColor: '#707a82' }}>Open</Button>

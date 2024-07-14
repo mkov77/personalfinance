@@ -70,12 +70,13 @@ export default function App() {
     <div className={classes.app}>
       <nav className={classes.navbar}>
         <Center>
-          <Image 
-            src={logo}
-            fallbackSrc="https://placehold.co/600x400?text=Placeholder"
-            alt="Logo"
-            onClick={() => setActive(0)}
-          />
+          <UnstyledButton onClick={() => setActive(0)}>
+            <Image
+              src={logo}
+              fallbackSrc="https://placehold.co/600x400?text=Placeholder"
+              alt="Logo"
+            />
+          </UnstyledButton>
         </Center>
 
         <div className={classes.navbarMain}>
@@ -85,15 +86,15 @@ export default function App() {
         </div>
 
         <Stack justify="center" gap={0}>
-          <NavbarLink 
-            icon={IconSettings} 
-            label="Settings" 
-            active={active === pages.length - 1} 
+          <NavbarLink
+            icon={IconSettings}
+            label="Settings"
+            active={active === pages.length - 1}
             onClick={() => setActive(pages.length - 1)}
           />
         </Stack>
       </nav>
-      
+
       <main className={classes.content}>
         <header className={classes.header}>
           <h1>{activePageName}</h1>

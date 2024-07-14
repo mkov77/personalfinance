@@ -34,10 +34,10 @@ export default function GoalModal({ goal, goalDate, goalamount }: GoalModalProps
 
   // Filter contributions based on the current goal
   const filteredContributions = contributions.filter(contribution => contribution.contributiongoal === goal);
-  
+
   return (
     <>
-      <Button onClick={() => setOpened(true)} style={{ backgroundColor: '#707a82' }}>Open</Button>
+      <Button onClick={() => setOpened(true)} color='#707a82'>Open</Button>
       <Modal size="lg" opened={opened} onClose={() => setOpened(false)} title=<h1 style={{margin: 0}}>{goal + ' Goal'}</h1>>
         <Card radius="md" withBorder mt={20} shadow="sm">
             <h3 style={{margin: 0}}>Progress</h3>

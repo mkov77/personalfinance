@@ -29,7 +29,7 @@ const AddGoalForm: React.FC<AddGoalFormProps> = ({ onAdd }) => {
           value={goalTargetDate}
           onChange={(event) => setGoalTargetDate(event.currentTarget.value)}
         />
-        <Center style={{marginTop: '20px'}}><Button onClick={handleSubmit} style={{backgroundColor: '#707a82'}}>Submit</Button></Center>
+        <Center style={{marginTop: '20px'}}><Button onClick={handleSubmit} color='#707a82'>Submit</Button></Center>
       </Modal>
     </>
   );

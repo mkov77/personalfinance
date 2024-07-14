@@ -95,7 +95,7 @@ function LogsPage() {
 
   const renderSortBy = () => {
     return (
-      <Group wrap="nowrap" gap={0}>
+      <Group wrap="nowrap" gap={0.5}>
         <Menu
           transitionProps={{ transition: 'pop-top-right' }}
           position="top-end"
@@ -104,9 +104,10 @@ function LogsPage() {
         >
           <Menu.Target>
             <Button
+              color='#707a82'
               style={{
                 borderTopRightRadius: 0,
-                borderBottomRightRadius: 0,
+                borderBottomRightRadius: 0
               }}
             >
               Sort
@@ -121,9 +122,10 @@ function LogsPage() {
           </Menu.Dropdown>
         </Menu>
         <Button
+          color='#707a82'
           style={{
             borderTopLeftRadius: 0,
-            borderBottomLeftRadius: 0,
+            borderBottomLeftRadius: 0
           }}
           onClick={toggleSortDirection}
         >

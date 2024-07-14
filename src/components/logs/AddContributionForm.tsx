@@ -78,7 +78,7 @@ const AddContributionForm: React.FC<AddContributionFormProps> = ({ onAdd }) => {
 
   return (
     <>
-      <Button onClick={() => setOpened(true)} style={{backgroundColor: '#707a82'}}>Add Contribution</Button>
+      <Button onClick={() => setOpened(true)} color='#707a82'>Add Contribution</Button>
       <Modal opened={opened} onClose={() => setOpened(false)} title="Add Contribution">
         <input type="date" value={date} onChange={(event) => setDate(event.currentTarget.value)} required />
         <NumberInput

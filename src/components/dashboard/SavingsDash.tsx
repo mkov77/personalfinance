@@ -1,4 +1,4 @@
-import { Progress, Box, Text, Group, Paper, SimpleGrid} from '@mantine/core';
+import { Progress, Box, Text, Group, Paper, SimpleGrid, NumberFormatter} from '@mantine/core';
 import classes from './SavingsDash.module.css';
 import { SavingsTotal } from '../../functions/Computations'
 
@@ -36,7 +36,7 @@ export default function SavingsDash() {
       <Paper withBorder p="md" radius="md" style={{ height: '250px' }}>
         <Group align="flex-end" gap="xs">
           <Text fz="xl" fw={700}>
-            ${amountSaved}
+            <NumberFormatter decimalScale={2} prefix="$" value={amountSaved} thousandSeparator/>
           </Text>
         </Group>
 

@@ -1,7 +1,7 @@
 // components/goals/GoalCard.tsx
 
 import React from 'react';
-import { Card, Text, RingProgress, Center, NumberFormatterFactory } from '@mantine/core';
+import { Card, Text, RingProgress, Center, NumberFormatterFactory, NumberFormatter } from '@mantine/core';
 import GoalModal from './GoalModal';
 import { GoalSavingsTotal } from '../../functions/Computations';
 
@@ -51,7 +51,7 @@ const GoalCard: React.FC<GoalCardProps> = ({ goalname, goaltargetdate, goalamoun
                 <Text ta="center" fz="lg" >
                   {/* {((completed / total) * 100).toFixed(0)}%
                   Saved */} 
-                  {currentTotal}
+                  <NumberFormatter prefix='$' decimalScale={0}  value={currentTotal} thousandSeparator/>
                 </Text>
                 <Text ta="center" fz="xs" c="dimmed">
                   Saved

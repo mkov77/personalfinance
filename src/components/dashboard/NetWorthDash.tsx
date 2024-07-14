@@ -1,4 +1,4 @@
-import { Text, Progress, Card } from '@mantine/core';
+import { Text, Progress, Card, NumberFormatter } from '@mantine/core';
 import { SavingsTotal, DebtTotal } from '../../functions/Computations'
 
 export default function NetWorthDash() {
@@ -14,7 +14,9 @@ export default function NetWorthDash() {
         Net Worth
       </Text>
       <Text fz="lg" fw={500}>
-        $ {Number(currentNetWorth)} / {goalNetWorth}
+        <NumberFormatter prefix='$' decimalScale={0}  value={currentNetWorth} thousandSeparator/>
+        {' / '}
+        <NumberFormatter prefix='$' decimalScale={0}  value={goalNetWorth} thousandSeparator/>
       </Text>
       <Progress value={ percentComplete } mt="md" size="lg" radius="xl" color='#4c5b67' />
     </Card>

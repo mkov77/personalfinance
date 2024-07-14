@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Container, Grid, Group, Modal, Progress, Text } from "@mantine/core";
+import { Badge, Button, Card, Container, Grid, Group, Modal, NumberFormatter, Progress, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 import GoalContributionCard from "./GoalContributionCard";
 import axios from "axios";
@@ -43,7 +43,9 @@ export default function GoalModal({ goal, goalDate, goalamount }: GoalModalProps
             <h3 style={{margin: 0}}>Progress</h3>
           <Group justify="space-between" mt="xs">
             <Text fz="sm">
-              ${Number(goalamount).toFixed(2)} / {savedTotal.toFixed(2)}
+            <NumberFormatter decimalScale={0} prefix="$" value={savedTotal} thousandSeparator/>
+              { " / " }
+              <NumberFormatter decimalScale={0}  value={goalamount} thousandSeparator/>
             </Text>
             <Text fz="sm" c="dimmed">
               {percentGoal.toFixed(0)}%

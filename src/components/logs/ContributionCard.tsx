@@ -1,6 +1,6 @@
 // src/components/logs/ContributionCard.tsx
 import React from 'react';
-import { Card, Text, Menu, ActionIcon, rem, Container, Grid } from '@mantine/core';
+import { Card, Text, Menu, ActionIcon, rem, Container, Grid, NumberFormatter } from '@mantine/core';
 import { Contribution } from '../../types/Contribution';
 import { IconDots, IconTrash, IconPencil, IconCalendar, IconTargetArrow, IconBucket, IconUser } from '@tabler/icons-react';
 import EditContributionForm from './EditContributionForm';
@@ -67,7 +67,7 @@ const ContributionCard: React.FC<ContributionCardProps> = ({ contribution, onDel
       <Grid grow gutter="lg" align='center' justify='flex-start'>
         {/* Amount */}
         <Grid.Col span={2}>
-          <Text fw={500}>${Number(contribution.contributionamount).toFixed(2)}</Text>
+          <Text fw={500} ml={15}><NumberFormatter decimalScale={2} prefix="$" value={contribution.contributionamount} thousandSeparator/></Text>
         </Grid.Col>
         {/* Date */}
         <Grid.Col span={2}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Text } from "@mantine/core";
+import { Card, NumberFormatter, Text } from "@mantine/core";
 import { DebtTotal } from "../functions/Computations";
 
 export default function DebtsPage() {
@@ -10,8 +10,8 @@ export default function DebtsPage() {
         <>
             <Text>Oof</Text>
             <Card withBorder radius="md">
-                <h1 style={{padding: 0, margin: 0}}>Total Debt</h1>
-                <Text>${totaldebt}</Text>
+                <h1 style={{padding: 0, margin: 0}}> Total Debt</h1>
+                <Text><NumberFormatter decimalScale={2} prefix="$" value={totaldebt} thousandSeparator/></Text>
             </Card>
         </>
     )

@@ -1,7 +1,3 @@
-/**
- * App.tsx serves as the house for the app shell and handles navigation. 
- * The user's desired page is rendered in within the app shell from this component.
- */
 import { useState } from 'react';
 import { Center, Tooltip, UnstyledButton, Stack, rem, Image } from '@mantine/core';
 import {
@@ -40,7 +36,13 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   );
 }
 
-const pages = [
+interface Page {
+  icon: typeof IconHome2;
+  label: string;
+  component: React.ComponentType<any>;
+}
+
+const pages: Page[] = [
   { icon: IconGauge, label: 'Dashboard', component: DashboardPage },
   { icon: IconReceipt, label: 'Log', component: LogsPage },
   { icon: IconTargetArrow, label: 'Goals', component: GoalsPage },
@@ -61,7 +63,7 @@ export default function App() {
     />
   ));
 
-  const ActivePage = pages[active].component;
+  const ActivePageComponent = pages[active].component;
   const activePageName = pages[active].label;
 
   return (
@@ -96,7 +98,11 @@ export default function App() {
           <h1>{activePageName}</h1>
         </header>
         <div className={classes.pageContent}>
-          <ActivePage />
+          {activePageName === 'Dashboard' ? (
+            <DashboardPage onNavigate={setActive} />
+          ) : (
+            <ActivePageComponent />
+          )}
         </div>
       </main>
     </div>

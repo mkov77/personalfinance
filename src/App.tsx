@@ -74,6 +74,7 @@ export default function App() {
             src={logo}
             fallbackSrc="https://placehold.co/600x400?text=Placeholder"
             alt="Logo"
+            onClick={() => setActive(0)}
           />
         </Center>
 

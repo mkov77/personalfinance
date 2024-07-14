@@ -4,6 +4,7 @@ import {
   SimpleGrid,
   UnstyledButton,
   useMantineTheme,
+  Modal,
 } from '@mantine/core';
 import {
   IconTablePlus,
@@ -14,6 +15,9 @@ import {
   IconSettings
 } from '@tabler/icons-react';
 import classes from './OptionsDash.module.css';
+import QuickAddForm from './QuickAddForm';
+import { useState } from 'react';
+import { Contribution } from '../../types/Contribution'; // Adjust the path as per your project structure
 
 const options = [
   { title: 'Quick Add', icon: IconTablePlus, color: 'violet', pageIndex: null },
@@ -26,15 +30,23 @@ const options = [
 
 export default function OptionsDash({ onNavigate }: { onNavigate: (pageIndex: number) => void }) {
   const theme = useMantineTheme();
+  const [modalOpened, setModalOpened] = useState(false);
 
   function handleQuickAdd() {
-    // Your logic for quick add
+    setModalOpened(true);
   }
 
   function handleNavigate(pageIndex: number | null) {
     if (pageIndex !== null) {
       onNavigate(pageIndex);
     }
+  }
+
+  function handleAddContribution(contribution: Omit<Contribution, 'contributionid'>) {
+    // Implement logic to handle the contribution addition
+
+    console.log('Contribution added:', contribution);
+    setModalOpened(false);
   }
 
   const items = options.map((item) => (
@@ -55,6 +67,9 @@ export default function OptionsDash({ onNavigate }: { onNavigate: (pageIndex: nu
       <SimpleGrid cols={3} mt="md">
         {items}
       </SimpleGrid>
+      <Modal opened={modalOpened} onClose={() => setModalOpened(false)} title="Add Contribution">
+        <QuickAddForm onAdd={handleAddContribution} />
+      </Modal>
     </Card>
   );
 }

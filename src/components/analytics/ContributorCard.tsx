@@ -16,9 +16,9 @@ export default function ContributorCard({ contributor }: ContributorCardProps) {
                 <GridCol>
                     <Text fw={700}>{contributor}</Text>
                 </GridCol>
-                <GridCol>
+                <GridCol mb={10} mr={5} p={0}>
                     <Group>
-                        <IconReceipt2 />
+                        <IconReceipt2 stroke={1.5}/>
                         <Text>
                             <NumberFormatter decimalScale={2} prefix="$" value={totalContributions} thousandSeparator />
                             {' contributed'}
@@ -26,7 +26,7 @@ export default function ContributorCard({ contributor }: ContributorCardProps) {
                     </Group>
                 </GridCol>
                 <Group>
-                    <IconAbacus />
+                    <IconAbacus stroke={1.5}/>
                     <Text>
                      {numContributions + ' contributions'}
                     </Text>

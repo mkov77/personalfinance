@@ -26,10 +26,10 @@ export default function ContributorGrid() {
     console.log(contributors)
     
     return(
-        <Card withBorder>
-            <h3>Contributions by Contributor</h3>
+        <Card withBorder shadow='sm'>
+            <h3 style={{margin: 0, padding: 0}}>Contributors</h3>
 
-            <Grid columns={3}>
+            <Grid columns={3} mt={10}>
                 {contributors.map((contributor) => (
                     <GridCol span={1}>
                     <ContributionCard contributor={contributor.name.toString()} />

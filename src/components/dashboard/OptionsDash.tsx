@@ -63,7 +63,7 @@ export default function OptionsDash({ onNavigate }: { onNavigate: (pageIndex: nu
   ));
 
   return (
-    <Card withBorder radius="md" className={classes.card}>
+    <Card withBorder radius="md" shadow='sm' className={classes.card}>
       <SimpleGrid cols={3} mt="md">
         {items}
       </SimpleGrid>

@@ -10,7 +10,7 @@ export default function DebtsPage() {
     return (
         <>
             {console.log('Big oof.')}
-            <Card withBorder radius="md">
+            <Card withBorder radius="md" shadow='sm'>
                 <h2 style={{padding: 0, margin: 0}}> <NumberFormatter decimalScale={2} prefix="$" value={totaldebt} thousandSeparator/> </h2>
                 <Text>Total Debt</Text>
             </Card>

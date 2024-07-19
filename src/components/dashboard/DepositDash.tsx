@@ -20,7 +20,7 @@ export default function DepositDash() {
     ));
 
     return (
-        <Card withBorder radius="md" className={classes.card} style={{ height: '250px' }}>
+        <Card withBorder radius="md" shadow='sm' className={classes.card} style={{ height: '250px' }}>
             <CardSection className={classes.section}>
                 <Group justify="space-between" mt="md">
                     <div>

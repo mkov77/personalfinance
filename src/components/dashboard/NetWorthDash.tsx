@@ -5,11 +5,11 @@ export default function NetWorthDash() {
     const currentSavings = SavingsTotal();
     const currentDebt = DebtTotal();
     const currentNetWorth = (currentSavings-currentDebt).toFixed(2);
-    const goalNetWorth = 500000;
+    const goalNetWorth = 100000;
     const percentComplete = (Number(currentNetWorth)/Number(goalNetWorth)*100);
 
   return (
-    <Card withBorder radius="md" padding="xl" bg="var(--mantine-color-body)" style={{ height: '175px' }}>
+    <Card withBorder radius="md" padding="xl" bg="var(--mantine-color-body)" shadow='sm' style={{ height: '175px' }}>
       <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
         Net Worth
       </Text>

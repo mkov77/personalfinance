@@ -33,7 +33,7 @@ export default function SavingsDash() {
   ));
 
   return (
-      <Paper withBorder p="md" radius="md" style={{ height: '250px' }}>
+      <Paper withBorder p="md" radius="md" shadow='sm' style={{ height: '250px' }}>
         <Group align="flex-end" gap="xs">
           <Text fz="xl" fw={700}>
             <NumberFormatter decimalScale={2} prefix="$" value={amountSaved} thousandSeparator/>

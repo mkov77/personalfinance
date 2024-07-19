@@ -25,7 +25,7 @@ export default function SwitchesCard() {
   ));
 
   return (
-    <Card withBorder radius="md" p="xl" className={classes.card}>
+    <Card withBorder radius="md" p="xl" shadow='sm' className={classes.card}>
       <Text fz="lg" className={classes.title} fw={500}>
         Configure notifications
       </Text>

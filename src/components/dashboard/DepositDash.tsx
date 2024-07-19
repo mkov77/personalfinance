@@ -1,4 +1,4 @@
-import { Card, Text, Group, Flex, CardSection } from '@mantine/core';
+import { Card, Text, Group, Flex, CardSection, NumberFormatter } from '@mantine/core';
 import { IconCalendar, IconTargetArrow, IconBucket, IconUser } from '@tabler/icons-react';
 import classes from './DepositDash.module.css';
 
@@ -22,21 +22,21 @@ export default function DepositDash() {
     return (
         <Card withBorder radius="md" shadow='sm' className={classes.card} style={{ height: '250px' }}>
             <CardSection className={classes.section}>
-                <Group justify="space-between" mt="md">
+                <Group justify="space-between" mt="sm" m={0}>
                     <div>
                         <Text fw={500}>Last Contribution</Text>
-                        <Text style={{ fontSize: '2rem', fontWeight: 'bold' }}>
-                            ${lastDepositAmount}
+                        <Text m={0} style={{ fontSize: '2rem', fontWeight: 'bold' }}>
+                            <NumberFormatter decimalScale={2} prefix="$" value={lastDepositAmount} thousandSeparator />
                         </Text>
                     </div>
                 </Group>
             </CardSection>
-            <Card.Section className={classes.section} mt="md">
-                <Text fz="sm" c="dimmed" className={classes.label}>
+            <Card.Section className={classes.section}>
+                <Text fz="sm" c="dimmed" className={classes.label} mb={15}>
                     Details
                 </Text>
 
-                <Group gap={20} mb={20}>
+                <Group gap={30} mb={20}>
                     {features}
                 </Group>
             </Card.Section>

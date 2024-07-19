@@ -23,30 +23,70 @@ export default function FigureGrid() {
             });
     };
 
-    // Calculate cumulative contribution amount
+    // Generate a range of dates between two dates
+    const generateDateRange = (startDate: Date, endDate: Date): Date[] => {
+        const dateArray = [];
+        let currentDate = new Date(startDate);
+        while (currentDate <= endDate) {
+            dateArray.push(new Date(currentDate));
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+        return dateArray;
+    };
+
+    // Calculate cumulative contribution amount and ensure every date is included
     const calculateCumulativeData = (data: Contribution[]) => {
+        if (data.length === 0) {
+            return [];
+        }
+
+        const sortedData = data
+            .filter(contribution => contribution && contribution.contributiondate)
+            .sort((a, b) => new Date(a.contributiondate).getTime() - new Date(b.contributiondate).getTime());
+
+        if (sortedData.length === 0) {
+            return [];
+        }
+
+        const startDate = new Date(sortedData[0].contributiondate);
+        const endDate = new Date();
+        const dateRange = generateDateRange(startDate, endDate);
+
         let cumulativeAmount = 0;
-        return data.map(contribution => {
-            cumulativeAmount += Number(contribution.contributionamount);
+        let contributionIndex = 0;
+
+        return dateRange.map(date => {
+            if (contributionIndex < sortedData.length && new Date(sortedData[contributionIndex].contributiondate).toDateString() === date.toDateString()) {
+                cumulativeAmount += Number(sortedData[contributionIndex].contributionamount);
+                contributionIndex++;
+            }
             return {
-                date: contribution.contributiondate,
+                date: date.toLocaleDateString(), // Format the date as a string
                 contributionamount: cumulativeAmount
             };
         });
     };
 
-    // Ensure data is sorted by date before calculating cumulative sum
-    const sortedContributions = [...contributions].sort((a, b) => new Date(a.contributiondate).getTime() - new Date(b.contributiondate).getTime());
-    const formattedData = calculateCumulativeData(sortedContributions);
+    const formattedData = calculateCumulativeData(contributions);
 
+    // Generate tick values based on the desired interval (e.g., every 7 days)
+    const generateTickValues = (data: { date: string }[], interval: number): string[] => {
+        const tickValues = [];
+        for (let i = 0; i < data.length; i += interval) {
+            tickValues.push(data[i].date);
+        }
+        return tickValues;
+    };
+
+    const tickValues = generateTickValues(formattedData, 7); // Change 7 to your desired interval
 
     const data = [
-        { month: 'January', Smartphones: 1200, Laptops: 900, Tablets: 200 }]
+        { month: 'January', Smartphones: 1200, Laptops: 900, Tablets: 200 }
+    ];
 
     return (
         <Card withBorder shadow='sm'>
             <h2 style={{ margin: 0, marginBottom: 20, padding: 0 }}>Figures</h2>
-
 
             <h3>Savings Growth</h3>
 
@@ -58,7 +98,13 @@ export default function FigureGrid() {
                 series={[
                     { name: 'contributionamount', color: '#946e96' }
                 ]}
-                curveType="linear"
+                curveType="stepAfter"
+                connectNulls
+                xAxisProps={{
+                    tickFormatter: (date: string) => date, // Date is already formatted as string
+                    ticks: tickValues
+                }}
+                withDots={false}
             />
 
             <h3>Savings Contributions per Month</h3>
@@ -74,7 +120,6 @@ export default function FigureGrid() {
                     { name: 'Tablets', color: 'teal.6' },
                 ]}
             />
-
         </Card>
     );
 }

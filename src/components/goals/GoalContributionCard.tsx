@@ -1,4 +1,4 @@
-import { Card, Grid, Text, Container, rem } from "@mantine/core";
+import { Card, Grid, Text, Container, rem, NumberFormatter } from "@mantine/core";
 import { IconBucket, IconCalendar, IconUser } from "@tabler/icons-react";
 import { Contribution } from "types/Contribution";
 import { GoalSavingsTotal } from "functions/Computations";
@@ -16,7 +16,7 @@ const GoalContributionCard: React.FC<GoalContributionCardProps> = ({ contributio
                 <Grid>
                     {/* Amount */}
                     <Grid.Col span={2}>
-                        <Text fw={500}>${Number(contribution.contributionamount).toFixed(2)}</Text>
+                        <Text fw={500} ml={10}><NumberFormatter decimalScale={2} prefix="$" value={contribution.contributionamount} thousandSeparator/></Text>
                     </Grid.Col>
                     {/* Date */}
                     <Grid.Col span={3}>

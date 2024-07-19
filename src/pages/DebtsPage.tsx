@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, NumberFormatter, Text } from "@mantine/core";
 import { DebtTotal } from "../functions/Computations";
+import DebtGrid from "../components/debts/DebtGrid";
 
 export default function DebtsPage() {
 
@@ -8,11 +9,14 @@ export default function DebtsPage() {
 
     return (
         <>
-            <Text>Oof</Text>
+            {console.log('Big oof.')}
             <Card withBorder radius="md">
-                <h1 style={{padding: 0, margin: 0}}> Total Debt</h1>
+                <h2 style={{padding: 0, margin: 0}}> Total Debt</h2>
                 <Text><NumberFormatter decimalScale={2} prefix="$" value={totaldebt} thousandSeparator/></Text>
             </Card>
+
+            <DebtGrid/>
+            
         </>
     )
 }

@@ -1,10 +1,18 @@
 import React from "react";
-import { Text } from "@mantine/core";
-// import Networth from "components/analytics/networth";
+import { Grid, GridCol, Text } from "@mantine/core";
+import Networth from "../components/analytics/NetworthCard";
+import ContributorGrid from "../components/analytics/ContributorGrid";
 
 export default function AnalyticsPage() {
-    return(
-        <Text>Where the real fun is at</Text>
-        
+    return (
+        <Grid>
+            <GridCol>
+                <Networth />
+            </GridCol>
+            <GridCol>
+                <ContributorGrid />
+            </GridCol>
+        </Grid>
+
     )
 }

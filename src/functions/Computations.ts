@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import { Contribution } from "types/Contribution";
 import { Debt } from "types/Debt";
 
-function contributionsGetter() {
+
+// Get all savings contributions
+function ContributionsGetter() {
     const [contributions, setContributions] = useState<Contribution[]>([]);
 
     useEffect(() => {
@@ -24,22 +26,11 @@ function contributionsGetter() {
     return contributions;
 }
 
-export function SavingsTotal() {
-    
-    let total = 0;
 
-    contributionsGetter().map((contribution) =>
-        total += Number(contribution.contributionamount)
-    )
-
-    return total;
-
-}
-
-
+// Add up all the savings for a specific goal
 export function GoalSavingsTotal(goal: string) {
 
-    const filteredContributions = contributionsGetter().filter(contribution => contribution.contributiongoal === goal);
+    const filteredContributions = ContributionsGetter().filter(contribution => contribution.contributiongoal === goal);
 
     
     let total = 0;
@@ -55,6 +46,49 @@ export function GoalSavingsTotal(goal: string) {
 
 }
 
+// Add up all the savings for a specific contributor
+export function ContributorSavingsTotal(contributor: string) {
+
+    const filteredContributions = ContributionsGetter().filter(contribution => contribution.contributor === contributor);
+
+    
+    let total = 0;
+
+
+
+    filteredContributions.map((contribution) =>
+        total += Number(contribution.contributionamount)
+    )
+
+    console.log('Total saved by ' + contributor + ' is: ' + total);
+    return total;
+
+}
+
+// Add up all the savings for a specific contributor
+export function ContributorSavingsCount(contributor: string) {
+
+    const filteredContributions = ContributionsGetter().filter(contribution => contribution.contributor === contributor);
+
+    return filteredContributions.length;
+
+}
+
+
+// Add up the total savings
+export function SavingsTotal() {
+    
+    let total = 0;
+
+    ContributionsGetter().map((contribution) =>
+        total += Number(contribution.contributionamount)
+    )
+
+    return total;
+
+}
+
+// Add up the total amount of debt
 export function DebtTotal() {
 
     const [debts, setDebts] = useState<Debt[]>([]);

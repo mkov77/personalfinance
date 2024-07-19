@@ -57,7 +57,7 @@ export default function GoalModal({ goal, goalDate, goalamount }: GoalModalProps
               <IconCalendarClock stroke={1.5}/>
               <Text fz="sm" m={0}>{new Date(goalDate).toLocaleDateString()}</Text>
             </Group>
-            <Badge color='#707a82' size="sm">20 weeks left</Badge>
+            <Badge color='#707a82' size="sm">17 weeks left</Badge>
           </Group>
         </Card>
 

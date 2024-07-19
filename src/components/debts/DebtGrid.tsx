@@ -24,7 +24,7 @@ export default function DebtGrid() {
     };
 
     return (
-        <Card withBorder mt={15} shadow='sm'>
+        <Card withBorder shadow='sm'>
             <h2 style={{ padding: 0, margin: 0 }}>Debts</h2>
 
             <Grid columns={3}>

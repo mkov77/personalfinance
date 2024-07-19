@@ -11,8 +11,8 @@ export default function DebtsPage() {
         <>
             {console.log('Big oof.')}
             <Card withBorder radius="md">
-                <h2 style={{padding: 0, margin: 0}}> Total Debt</h2>
-                <Text><NumberFormatter decimalScale={2} prefix="$" value={totaldebt} thousandSeparator/></Text>
+                <h2 style={{padding: 0, margin: 0}}> <NumberFormatter decimalScale={2} prefix="$" value={totaldebt} thousandSeparator/> </h2>
+                <Text>Total Debt</Text>
             </Card>
 
             <DebtGrid/>

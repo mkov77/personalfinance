@@ -20,15 +20,15 @@ export default function ContributorCard({ contributor }: ContributorCardProps) {
                     <Group>
                         <IconReceipt2 />
                         <Text>
-                            {'Total: '}
                             <NumberFormatter decimalScale={2} prefix="$" value={totalContributions} thousandSeparator />
+                            {' contributed'}
                         </Text>
                     </Group>
                 </GridCol>
                 <Group>
                     <IconAbacus />
                     <Text>
-                        {'Count: '} {numContributions}
+                     {numContributions + ' contributions'}
                     </Text>
                 </Group>
                 <GridCol>

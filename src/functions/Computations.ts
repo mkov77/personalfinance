@@ -32,7 +32,7 @@ export function GoalSavingsTotal(goal: string) {
 
     const filteredContributions = ContributionsGetter().filter(contribution => contribution.contributiongoal === goal);
 
-    
+
     let total = 0;
 
 
@@ -51,7 +51,7 @@ export function ContributorSavingsTotal(contributor: string) {
 
     const filteredContributions = ContributionsGetter().filter(contribution => contribution.contributor === contributor);
 
-    
+
     let total = 0;
 
 
@@ -77,7 +77,7 @@ export function ContributorSavingsCount(contributor: string) {
 
 // Add up the total savings
 export function SavingsTotal() {
-    
+
     let total = 0;
 
     ContributionsGetter().map((contribution) =>
@@ -94,11 +94,11 @@ export function DebtTotal() {
     const [debts, setDebts] = useState<Debt[]>([]);
 
     useEffect(() => {
-        fetchContributions();
+        fetchDebts();
     }, []);
 
-    const fetchContributions = () => {
-        console.log("Getting contributions");
+    const fetchDebts = () => {
+        console.log("Getting debts");
         axios.get<Debt[]>('http://localhost:5000/debts')
             .then(response => {
                 setDebts(response.data);
@@ -115,5 +115,5 @@ export function DebtTotal() {
     )
 
     return total;
-     
+
 }

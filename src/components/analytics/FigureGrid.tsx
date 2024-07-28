@@ -80,13 +80,58 @@ export default function FigureGrid() {
 
     const tickValues = generateTickValues(formattedData, 7); // Change 7 to your desired interval
 
-    const data = [
-        { month: 'January', Smartphones: 1200, Laptops: 900, Tablets: 200 }
-    ];
+
+    // Aggregate contributions by month and contributor
+    const aggregateContributions = (data: Contribution[]) => {
+        const contributionsByMonth: { [key: string]: { [key: string]: number } } = {};
+
+        data.forEach(contribution => {
+            const date = new Date(contribution.contributiondate);
+            const month = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+
+            if (!contributionsByMonth[month]) {
+                contributionsByMonth[month] = {};
+            }
+
+            if (!contributionsByMonth[month][contribution.contributor]) {
+                contributionsByMonth[month][contribution.contributor] = 0;
+            }
+
+            contributionsByMonth[month][contribution.contributor] += Number(contribution.contributionamount);
+        });
+
+        return contributionsByMonth;
+    };
+
+    const aggregatedData = aggregateContributions(contributions);
+
+    // Format data for BarChart
+    const formattedBarData = Object.keys(aggregatedData).map(month => {
+        return {
+            month,
+            ...aggregatedData[month]
+        };
+    }).sort((a, b) => new Date(a.month).getTime() - new Date(b.month).getTime());
+
+    // Extract unique contributors for series definition
+    const uniqueContributors = Array.from(new Set(contributions.map(contribution => contribution.contributor)));
+
+    // Define colors for each contributor
+    const contributorColors = (contributor: string): string => {
+        switch (contributor) {
+            case 'Sondre':
+                return '#87a179';  
+            case 'MK':
+                return '#b5677b';
+            case 'Joint':
+            default:
+                return '#485160'; 
+        }
+    };
 
     return (
         <Card withBorder shadow='sm'>
-            <h2 style={{ margin: 0, marginBottom: 20, padding: 0 }}>Figures</h2>
+            {/* <h2 style={{ margin: 0, marginBottom: 20, padding: 0 }}>Figures</h2> */}
 
             <h3>Savings Growth</h3>
 
@@ -107,18 +152,18 @@ export default function FigureGrid() {
                 withDots={false}
             />
 
-            <h3>Savings Contributions per Month</h3>
+            <h3>Contribution Total by Month</h3>
             {/* Stacked bar chart for contribution amount by month and broken down by contributor */}
             <BarChart
-                h={300}
-                data={data}
+                h={400}
+                data={formattedBarData}
                 dataKey="month"
                 type="stacked"
-                series={[
-                    { name: 'Smartphones', color: 'violet.6' },
-                    { name: 'Laptops', color: 'blue.6' },
-                    { name: 'Tablets', color: 'teal.6' },
-                ]}
+                series={uniqueContributors.map(contributor => ({
+                    name: contributor,
+                    dataKey: contributor,
+                    color: contributorColors(contributor)
+                }))}
             />
         </Card>
     );

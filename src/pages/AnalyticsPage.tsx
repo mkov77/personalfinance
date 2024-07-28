@@ -7,9 +7,9 @@ import FigureGrid from "../components/analytics/FigureGrid";
 export default function AnalyticsPage() {
     return (
         <Grid>
-            <GridCol>
+            {/* <GridCol>
                 <Networth />
-            </GridCol>
+            </GridCol> */}
             <GridCol>
                 <ContributorGrid />
             </GridCol>

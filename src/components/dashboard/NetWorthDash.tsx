@@ -5,7 +5,7 @@ export default function NetWorthDash() {
     const currentSavings = SavingsTotal();
     const currentDebt = DebtTotal();
     const currentNetWorth = (currentSavings-currentDebt).toFixed(2);
-    const goalNetWorth = 100000;
+    const goalNetWorth = 25000;
     const percentComplete = (Number(currentNetWorth)/Number(goalNetWorth)*100);
 
   return (

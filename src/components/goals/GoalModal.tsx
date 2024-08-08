@@ -17,6 +17,7 @@ export default function GoalModal({ goal, goalDate, goalamount }: GoalModalProps
   const [contributions, setContributions] = useState<Contribution[]>([]);
   const savedTotal = GoalSavingsTotal(goal);
   const percentGoal = savedTotal/goalamount*100;
+  const leftToGo = goalamount - savedTotal;
 
   useEffect(() => {
     fetchContributions();
@@ -57,7 +58,7 @@ export default function GoalModal({ goal, goalDate, goalamount }: GoalModalProps
               <IconCalendarClock stroke={1.5}/>
               <Text fz="sm" m={0}>{new Date(goalDate).toLocaleDateString()}</Text>
             </Group>
-            <Badge color='#707a82' size="sm">17 weeks left</Badge>
+            <Badge color='#707a82' size="sm"><NumberFormatter decimalScale={0} prefix="$" value={leftToGo} thousandSeparator/>{ " to go"}</Badge>
           </Group>
         </Card>
 

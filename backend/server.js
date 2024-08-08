@@ -181,3 +181,20 @@ app.get('/debts', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
+
+// GET endpoint to get the latest contribution
+app.get('/latest-contribution', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT *
+      FROM contributions
+      ORDER BY contributiondate DESC
+      LIMIT 1
+    `);
+    
+    res.json(result.rows[0]); // Return only the single latest record
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
